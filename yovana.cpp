@@ -22,11 +22,11 @@ public:
     virtual void printInfo() const = 0;
     virtual void provejdaneDelo() = 0;
 
-    // Препокриване (Overriding) на виртуални методи (базова дефиниция)
+    // Препокриване (Overriding) на виртуални методи
     virtual void infoSpecializaciq() {}
 };
 
-// Реализиране на йерархия от класове с поне три нива на наследяване (Ниво 1)
+// Реализиране на йерархия от класове с поне три нива на наследяване
 class Judge : public LegalEntity {
 protected:
     string Sud;
@@ -37,13 +37,12 @@ public:
         : LegalEntity(Ime, Godina), Sud(Sud), BroiResheniq(BroiResheniq) {
     }
 
-    // Препокриване (Overriding) на виртуални методи
     void Godishnina() const override {
         cout << Ime << " // " << (2026 - GodinaNaPostupvane) << " godini staj v sudebnata sistema" << endl;
     }
 };
 
-// Реализиране на йерархия от класове (Ниво 2 - Разклонение 1)
+// Реализиране на йерархия от класове
 class CriminalJudge : public Judge {
 private:
     string rang;
@@ -65,7 +64,7 @@ public:
     }
 };
 
-// Реализиране на йерархия от класове (Ниво 1 - Разклонение 2)
+// Реализиране на йерархия от класове
 class Lawyer : public LegalEntity {
 protected:
     string oblast;
@@ -80,7 +79,7 @@ public:
     }
 };
 
-// Реализиране на йерархия от класове (Ниво 2)
+// Реализиране на йерархия от класове
 class DefenseAttorney : public Lawyer {
 protected:
     string Kliant;
@@ -109,7 +108,7 @@ public:
 int main() {
     // Полиморфична обработка на обекти чрез масив от указатели към базовия клас
     LegalEntity* entities[] = {
-        // Динамично управление на паметта (създ. с new)
+        // Динамично управление на паметта
         new CriminalJudge("Ivan Ivanov", 1998, "Okrujen Sud", 450, "Vurhoven Sudbiq", 120,
             "Sudiq Ivanov vodi deloto s izkluchitelna preciznost i po sigurni pravila."),
 
@@ -137,7 +136,7 @@ int main() {
         cout << endl;
     }
 
-    // Динамично управление на паметта (освобождаване с delete)
+    // Динамично управление на паметта
     for (int i = 0; i < 4; ++i) {
         delete entities[i];
     }
